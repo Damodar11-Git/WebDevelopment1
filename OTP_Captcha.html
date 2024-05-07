@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+
+
+            .capthcaText {
+                text-align: center;
+                width: 80px;
+                margin: 20px;
+                padding: 10px;
+                font-weight: bold;
+                border: 2px solid green;
+            }
+			table, td{
+			border:1px solid green;
+			margin:20px;
+			padding:10px;
+			
+			}
+        </style>
+    </head>
+    <body>
+        <table >
+		<tr>
+			<td>1 </td><td><button onclick="GenerateRandomValue()">Generate Random Value </button></td>
+			<td> <div id="RandomValue" class="capthcaText"> </div> </td>
+		</tr>
+		
+		<tr>
+			<td>2 </td><td><button onclick="generateRandomNumber()">Generate Random Number </button></td>
+			<td> <div id="RandomNumber" class="capthcaText"> </div> </td></tr>
+
+		<tr>
+			<td>3 </td><td><button onclick="GenerateRandomValue_50_100()">Generate Random Value between 50 and 100</button></td>
+			<td> <div id="RandomValue50_100" class="capthcaText"> </div> </td></tr>
+
+		<tr>
+			<td>4 </td><td><button onclick="generateOTP()">Generate OTP</button></td>
+			<td> <div id="otpnumber" class="capthcaText"> </div> </td></tr>
+
+		<tr>
+			<td>5 </td><td><button onclick="generateUpperCaseRandomChar()">Generate Random Big alphabet</button></td>
+			<td> <div id="uppercaseRandomAlphabet" class="capthcaText"> </div> </td></tr>
+
+		<tr>
+			<td>6 </td><td><button onclick="generateLowerCaseRandomChar()">Generate Random Small alphabet</button></td>
+			<td> <div id="lowercaseRandomAlphabet" class="capthcaText"> </div> </td></tr>
+
+		<tr>
+			<td>7 </td><td><button onclick="generateFixedPatternCaptchaText()" >Generate Fixed pattern Captcha Text</button></td>
+			<td> <div id="fixedCaptchaText" class="capthcaText"> </div> </td></tr>
+
+
+		<tr>
+			<td>7 </td><td><button onclick="generateCaptchaText()" >Generate Random Pattern Captcha Text</button></td>
+			<td> <div id="captchaText" class="capthcaText"> </div> </td></tr>
+
+		</table>
+
+		<script>
+		
+		var  GenerateRandomValue = () => {
+		console.log("Generate Random Value")
+		randomValue = Math.round(Math.random());
+		console.log(randomValue)
+		document.querySelector("#RandomValue").innerText=randomValue;
+		}
+
+	var generateRandomNumber = () => {
+		
+		randomValue = Math.round(Math.random() * 9);
+		document.querySelector("#RandomNumber").innerText=randomValue;
+		return randomValue;
+		
+	}
+
+		var GenerateRandomValue_50_100 = ()=>
+		{
+			var min = 50;
+			var max =100;
+			var randomValue = Math.round(  Math.random() * (max - min)  + min);
+			console.log(randomValue)
+			document.querySelector("#RandomValue50_100").innerText=randomValue;
+		}
+
+
+	var generateOTP = () =>
+	{
+		//var otpSize = prompt("enter size");
+		otpSize = 5;
+		var otpValue = '';
+		for (var i = 0; i < otpSize; i++) {
+			otpValue += generateRandomNumber();
+			console.log(otpValue);
+		}
+		
+		document.querySelector("#otpnumber").innerText = otpValue;
+	}
+
+		var generateCaptchaText =() =>
+		{
+			// var patternLength = prompt("enter capthca size");
+			var patternList = ['U', 'L', 'N'];
+			
+			var patternLength = 5;
+			var pattern = '';
+			for (var i = 0; i < patternLength; i++) {
+				var index = Math.round(Math.random() * (patternList.length -1));
+				pattern += patternList[index];
+			}
+			
+			console.log(pattern);
+			var patterns = pattern.split('');
+			console.log(patterns);
+
+			var randomCapthca = '';
+			
+			for (var i = 0 ; i < patterns.length; i++) {
+				switch(patterns[i]) {
+					case 'L':
+						randomCapthca += generateLowerCaseRandomChar();
+						break;
+					case 'U':
+						randomCapthca += generateUpperCaseRandomChar(); 
+						break;
+					case 'N':
+						randomCapthca += generateRandomNumber();
+						break;
+				}
+			}
+			console.log(randomCapthca);
+			document.querySelector("#captchaText").innerHTML = randomCapthca;
+	}
+	
+	var generateLowerCaseRandomChar = () =>
+	{
+		var max = 122;
+		var min = 97;
+		var randomAscii = Math.round(  Math.random() * (max - min)  + min);
+		var randomChar = String.fromCharCode(randomAscii);
+		document.querySelector("#lowercaseRandomAlphabet").innerHTML = randomChar;
+		return randomChar;
+	}
+	
+	var generateUpperCaseRandomChar = () =>
+	{
+		var max = 90;
+		var min = 65;
+		var randomAscii = Math.round(  Math.random() * (max - min)  + min);
+		var randomChar = String.fromCharCode(randomAscii);
+		document.querySelector("#uppercaseRandomAlphabet").innerHTML = randomChar;
+		return randomChar;
+	}
+
+	var generateFixedPatternCaptchaText = () =>{
+		var strings = ['U', 'L', 'N'];
+		var pattern = 'NULNL';
+		var capthcaText = generateRandomNumber() + generateUpperCaseRandomChar() + generateLowerCaseRandomChar() + generateRandomNumber() + generateUpperCaseRandomChar();
+        document.querySelector("#fixedCaptchaText").innerText = capthcaText;
+	}
+	
+	</script>
+		
+    </body>
+</html>
