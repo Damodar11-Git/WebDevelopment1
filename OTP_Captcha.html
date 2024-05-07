@@ -15,48 +15,49 @@
                 font-weight: bold;
                 border: 2px solid green;
             }
-			table, td{
-			border:1px solid green;
+			table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
 			margin:20px;
 			padding:10px;
-			
 			}
+ 
         </style>
     </head>
     <body>
         <table >
 		<tr>
-			<td>1 </td><td><button onclick="GenerateRandomValue()">Generate Random Value </button></td>
+			<td>1 </td><td><button onclick="GenerateRandomValue()">Random Value </button></td>
 			<td> <div id="RandomValue" class="capthcaText"> </div> </td>
 		</tr>
 		
 		<tr>
-			<td>2 </td><td><button onclick="generateRandomNumber()">Generate Random Number </button></td>
+			<td>2 </td><td><button onclick="generateRandomNumber()">Random Number </button></td>
 			<td> <div id="RandomNumber" class="capthcaText"> </div> </td></tr>
 
 		<tr>
-			<td>3 </td><td><button onclick="GenerateRandomValue_50_100()">Generate Random Value between 50 and 100</button></td>
+			<td>3 </td><td><button onclick="GenerateRandomValue_50_100()">Random Number between 50 and 100</button></td>
 			<td> <div id="RandomValue50_100" class="capthcaText"> </div> </td></tr>
 
 		<tr>
-			<td>4 </td><td><button onclick="generateOTP()">Generate OTP</button></td>
+			<td>4 </td><td><button onclick="generateOTP()">OTP</button></td>
 			<td> <div id="otpnumber" class="capthcaText"> </div> </td></tr>
 
 		<tr>
-			<td>5 </td><td><button onclick="generateUpperCaseRandomChar()">Generate Random Big alphabet</button></td>
+			<td>5 </td><td><button onclick="generateUpperCaseRandomChar()">Big alphabet</button></td>
 			<td> <div id="uppercaseRandomAlphabet" class="capthcaText"> </div> </td></tr>
 
 		<tr>
-			<td>6 </td><td><button onclick="generateLowerCaseRandomChar()">Generate Random Small alphabet</button></td>
+			<td>6 </td><td><button onclick="generateLowerCaseRandomChar()">Small alphabet</button></td>
 			<td> <div id="lowercaseRandomAlphabet" class="capthcaText"> </div> </td></tr>
 
 		<tr>
-			<td>7 </td><td><button onclick="generateFixedPatternCaptchaText()" >Generate Fixed pattern Captcha Text</button></td>
+			<td>7 </td><td><button onclick="generateFixedPatternCaptchaText()" >Captcha Text</button></td>
 			<td> <div id="fixedCaptchaText" class="capthcaText"> </div> </td></tr>
 
 
 		<tr>
-			<td>7 </td><td><button onclick="generateCaptchaText()" >Generate Random Pattern Captcha Text</button></td>
+			<td>7 </td><td><button onclick="generateCaptchaText()" >Pattern Captcha Text</button></td>
 			<td> <div id="captchaText" class="capthcaText"> </div> </td></tr>
 
 		</table>
@@ -64,7 +65,7 @@
 		<script>
 		
 		var  GenerateRandomValue = () => {
-		console.log("Generate Random Value")
+		console.log("Random Value")
 		randomValue = Math.round(Math.random());
 		console.log(randomValue)
 		document.querySelector("#RandomValue").innerText=randomValue;
